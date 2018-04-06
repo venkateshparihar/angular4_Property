@@ -1,0 +1,35 @@
+
+<div class="content-wrapper" >
+	<div class="container-fluid" style="margin-bottom: 50%;margin-top: 0%">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					Dashboard
+				</li>
+			</ol>
+			<div class="row">
+				<div class="col-md-6">
+					<h4> Property Category Count</h4>
+					<canvas baseChart
+					[data]="doughnutChartData"
+					[labels]="category"
+					[chartType]="doughnutChartType"
+					(chartHover)="chartHovered($event)"
+					(chartClick)="chartClicked($event)"></canvas>
+				</div>
+
+				<div  class="col-md-6">
+				<h4> Property Establish Year Count</h4>
+					<canvas baseChart
+					[datasets]="barChartData"
+					[labels]="est"
+					[options]="barChartOptions"
+					[legend]="barChartLegend"
+					[chartType]="barChartType"
+					(chartHover)="chartHovered($event)"
+					(chartClick)="chartClicked($event)"></canvas>
+				</div>
+				
+		</div>
+	</div>
+</div>
+<script src="./../../../node_modules/chart.js/src/chart.js"></script>

@@ -1,0 +1,88 @@
+<div class="content-wrapper">
+    <div class="container-fluid" style="margin-bottom: 50%;margin-top: 0%">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                Dashboard
+            </li>
+            <li class="breadcrumb-item">
+                Property
+            </li>
+            <li class="breadcrumb-item active">data </li>
+        </ol>
+        <div class="col-md-6 col-md-pop-3 col-md-push-3">
+            <form role="form" novalidate [formGroup]="property" ngNoForm>
+                <div class="box-body ">
+
+                    <label>Building Name</label>
+                    <div class="form-group" [ngClass]="{
+          'has-danger': name.invalid && (name.dirty || name.touched),
+          'has-success': name.valid && (name.dirty || name.touched)
+        }">
+                        <input type="text" class="form-control" [(ngModel)]="PropertyData.name" placeholder="Enter Building Name" formControlName="name" required>
+
+                        <div *ngIf="name?.errors && (name?.dirty || name?.touched)">
+                            <p *ngIf="name?.errors.required">Building Name is required</p>
+                        </div>
+                    </div>
+
+                    <label>Category</label>
+                    <div class="form-group" [ngClass]="{
+    'has-danger': category.invalid && (category.dirty || category.touched),
+    'has-success': category.valid && (category.dirty || category.touched)
+  }">
+                        <input type="text" class="form-control" [(ngModel)]="PropertyData.category" placeholder="Enter Category Name" formControlName="category" required>
+
+                        <div *ngIf="category?.errors && (category?.dirty || category?.touched)">
+                            <p *ngIf="category?.errors.required">Building Category is required</p>
+                        </div>
+                    </div>
+
+                    <label>Area</label>
+                    <div class="form-group" [ngClass]="{
+'has-danger': area.invalid && (area.dirty || area.touched),
+'has-success': area.valid && (area.dirty || area.touched)
+}">
+                        <input type="text" class="form-control" [(ngModel)]="PropertyData.area" placeholder="Enter Area " formControlName="area" required>
+
+                        <div *ngIf="area?.errors && (area?.dirty || area?.touched)">
+                            <p *ngIf="area?.errors.required"> Area is required</p>
+                            <p *ngIf="area.errors.pattern">Enter Area like 1500,2400</p>
+                        </div>
+                    </div>
+
+                    <label>Est Year</label>
+                    <div class="form-group" [ngClass]="{
+'has-danger': estYear.invalid && (estYear.dirty || estYear.touched),
+'has-success': estYear.valid && (estYear.dirty || estYear.touched)
+}">
+                        <input type="text" class="form-control" [(ngModel)]="PropertyData.estYear" placeholder="Enter Est Year " formControlName="estYear" required>
+
+                        <div *ngIf="estYear?.errors && (estYear?.dirty || estYear?.touched)">
+                            <p *ngIf="estYear?.errors.required"> Est Year is required</p>
+                            <p *ngIf="estYear.errors.pattern"> Est Year required</p>
+                        </div>
+                    </div>
+
+                    <label>Price</label>
+                    <div class="form-group" [ngClass]="{
+'has-danger': price.invalid && (price.dirty || price.touched),
+'has-success': price.valid && (price.dirty || price.touched)
+}">
+                        <input type="text" class="form-control" [(ngModel)]="PropertyData.price" placeholder="Enter Price " formControlName="price" required>
+
+                        <div *ngIf="price?.errors && (price?.dirty || price?.touched)">
+                            <p *ngIf="price?.errors.required"> Price is required</p>
+                            <p *ngIf="price.errors.pattern"> Price required</p>
+                        </div>
+                    </div>
+
+                </div>
+                <pre>{{property.value | json}}</pre>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="button" (click)="saveProperty()" [disabled]="!property.valid" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
